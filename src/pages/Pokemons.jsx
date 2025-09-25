@@ -31,17 +31,20 @@ const Pokemons = () => {
     <div>
       <h2>Bem-Vindos a região de Kanto!!</h2>
       {carregando && <p>Carregando...</p>}
-      <ul style={{ listStyle: "none", padding: 0, display: "flex", flexWrap: "wrap", gap: "10px" }}>
+      <ul className="centralizar-cards">
         {dados.map((pokemon, index) => (
           <li className="card-pokemon" key={index}>
-            <Link to={`/pokemons/${index + 1}`} style={{ textDecoration: "none", color: "black" }}>
+            <Link
+              to={`/pokemons/${index + 1}`}
+              style={{ textDecoration: "none", color: "black" }}
+            >
               <img
                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
                 alt={pokemon.name}
-                width="80"
-                height="80"
+                width="150"
+                height="150"
               />
-              <p style={{ marginTop: "5px", textTransform: "capitalize" }}>
+              <p className="nome-pokemon" style={{ marginTop: "5px", textTransform: "capitalize" }}>
                 {pokemon.name}
               </p>
             </Link>
