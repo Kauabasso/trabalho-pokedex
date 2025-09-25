@@ -1,46 +1,55 @@
-import { useState } from "react";
-import { useEffect } from "react";
-
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Pokemons = () => {
-    const [dados, setDados] = useState(null);
-    const [carregando, setCarregando] = useState(true);
+  const [dados, setDados] = useState([]);
+  const [carregando, setCarregando] = useState(true);
 
-    useEffect(() => {
-        const buscaDados = async () => {
-            try {
-                const resposta = await fetch('https://pokeapi.co/api/v2/pokemon/squirtle');
+  useEffect(() => {
+    const buscaDados = async () => {
+      try {
+        const resposta = await fetch(
+          "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0"
+        );
 
-
-                if(!resposta.ok) {
-                    throw new Error('Erro na requisição');
-                }
-                const resultado = await resposta.json();
-                setDados(resultado);
-            }catch(erro) {
-                console.log(erro); 
-        }finally{
-            setCarregando(false);
+        if (!resposta.ok) {
+          throw new Error("Erro na requisição");
         }
-       
-    }
-    buscaDados();
-    }, []);
 
-    return (
-        <div>
-            <h2>Usuarios</h2>
-            <p>Dados requisitados por API</p>
-            <div>{carregando ? 'Carregando...' : ""}</div>
-            <ul>
-                {dados && dados.map((species) => (
-                    <li key={species.id}>
-                        {species.name}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    )
-}
+        const resultado = await resposta.json();
+        setDados(resultado.results);
+      } catch (erro) {
+        console.log(erro);
+      } finally {
+        setCarregando(false);
+      }
+    };
+    buscaDados();
+  }, []);
+
+  return (
+    <div>
+      <h2>Bem-Vindos a região de Kanto!!</h2>
+      {carregando && <p>Carregando...</p>}
+      <ul style={{ listStyle: "none", padding: 0, display: "flex", flexWrap: "wrap", gap: "10px" }}>
+        {dados.map((pokemon, index) => (
+          <li className="card-pokemon" key={index}>
+            <Link to={`/pokemons/${index + 1}`} style={{ textDecoration: "none", color: "black" }}>
+              <img
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
+                alt={pokemon.name}
+                width="80"
+                height="80"
+              />
+              <p style={{ marginTop: "5px", textTransform: "capitalize" }}>
+                {pokemon.name}
+              </p>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export default Pokemons;
