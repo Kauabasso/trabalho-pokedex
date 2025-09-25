@@ -175,3 +175,72 @@ button:focus-visible {
   z-index: 5;
   
 }
+
+.detalhes-pokemon{
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 700;
+  font-size: 0.9em;
+  padding: 20px;
+  color: white;
+  border-radius: 23px;
+  border: 10px solid black;
+background: linear-gradient(145deg, #c32b2b, #e83333);
+box-shadow:  31px 31px 0px #731919,
+             -31px -31px 0px #ff4747;
+}
+
+.imagem-detalhes{
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/80ff523f-ff84-457d-a547-464588d3a3d3/dfpnrfi-36d5789f-a00f-4ef3-90db-4312b2be59b4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi84MGZmNTIzZi1mZjg0LTQ1N2QtYTU0Ny00NjQ1ODhkM2EzZDMvZGZwbnJmaS0zNmQ1Nzg5Zi1hMDBmLTRlZjMtOTBkYi00MzEyYjJiZTU5YjQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.eMjp1b9bTGD_8fP68CLBQ-Zd841SPLgR5zsxMzIkiJE');
+  border-radius: 23px;
+  border: 5px solid black;
+  width: 150px;
+}
+
+.botao-voltar{
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 700;
+  font-size: 0.9em;
+ margin-top: 80px;
+ color: black;
+}
+
+.botao-voltar {
+  background-color: #e0e0e0;
+  border-radius: 50px;
+  box-shadow: inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff;
+  color: #4d4d4d;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 15px 40px;
+  transition: all 0.2s ease-in-out;
+  border: 2px solid rgb(206, 206, 206);
+}
+
+.botao-voltar:hover {
+  box-shadow: inset 2px 2px 5px #bcbcbc, inset -2px -2px 5px #ffffff, 2px 2px 5px #bcbcbc, -2px -2px 5px #ffffff;
+}
+
+.botao-voltar:focus {
+  outline: none;
+  box-shadow: inset 2px 2px 5px #bcbcbc, inset -2px -2px 5px #ffffff, 2px 2px 5px #bcbcbc, -2px -2px 5px #ffffff;
+}
+.link-voltar{
+  text-decoration: none;
+  color: black;
+}
+.link-voltar:hover{
+  text-decoration: none;
+  color: black;
+}
+.title{
+  font-family: "Silkscreen", sans-serif;
+  font-weight: 700;
+  font-size: 2.5em;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
+  margin-bottom: 20px;
+}
+
+.carregando{
+  color: white;
+}

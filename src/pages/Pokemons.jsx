@@ -17,7 +17,21 @@ const Pokemons = () => {
         }
 
         const resultado = await resposta.json();
-        setDados(resultado.results);
+
+        
+        const pokemonsDetalhados = await Promise.all(
+          resultado.results.map(async (pokemon) => {
+            const res = await fetch(pokemon.url);
+            const detalhes = await res.json();
+            return {
+              id: detalhes.id,
+              name: detalhes.name,
+              sprite: detalhes.sprites.front_default, 
+            };
+          })
+        );
+
+        setDados(pokemonsDetalhados);
       } catch (erro) {
         console.log(erro);
       } finally {
@@ -29,22 +43,25 @@ const Pokemons = () => {
 
   return (
     <div>
-      <h2>Bem-Vindos a região de Kanto!!</h2>
-      {carregando && <p>Carregando...</p>}
+      <h2 className="title">Bem-Vindos à região de Kanto!!</h2>
+      {carregando && <p className="carregando">Carregando...</p>}
       <ul className="centralizar-cards">
-        {dados.map((pokemon, index) => (
-          <li className="card-pokemon" key={index}>
+        {dados.map((pokemon) => (
+          <li className="card-pokemon" key={pokemon.id}>
             <Link
-              to={`/pokemons/${index + 1}`}
+              to={`/pokemons/${pokemon.id}`}
               style={{ textDecoration: "none", color: "black" }}
             >
               <img
-                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`}
+                src={pokemon.sprite}
                 alt={pokemon.name}
                 width="150"
                 height="150"
               />
-              <p className="nome-pokemon" style={{ marginTop: "5px", textTransform: "capitalize" }}>
+              <p
+                className="nome-pokemon"
+                style={{ marginTop: "5px", textTransform: "capitalize" }}
+              >
                 {pokemon.name}
               </p>
             </Link>
